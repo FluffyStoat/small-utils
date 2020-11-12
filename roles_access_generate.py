@@ -57,7 +57,7 @@ def main(argv: List[str]):
 
         with open(output_file, "w") as result_file:
             for cls_name in class_names:
-                rec: str = f'@EntityAccess(entityClass={cls_name}.class, ' \
+                rec: str = f'@EntityAccess(entityClass = {cls_name}.class, ' \
                            f'operations = {{EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE}})\n'
                 result_file.write(rec)
                 print(rec)
