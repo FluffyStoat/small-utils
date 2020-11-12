@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            eel.get_class_list()(class_list => {
+                document.getElementById("data_container").innerHTML = class_list;
+                alert(class_list);
+            });
+        });
+
+        function generate() {
+            var input_data = document.getElementsByClassName("CustomClass")
+
+            var data = [];
+            Array.prototype.forEach.call(input_data, function(el) {
+                if (el.checked) {
+                    data.push(el.id);
+                }
+            });
+
+            eel.generate(data)(callBack);
+        }
+
+        function callBack(result) {
+            document.getElementById("result_container").innerHTML = result;
+        }
+
+        jQuery('#btn_generate').on('click', function() {
+            alert('GENERATION!!!');
+            generate();
+        });
+    </script>
+</head>
+<body>
+    <p><b>Please, select classes for property generation:</b></p><br/>
+    <div id="data_container">
+        <!--    Container    -->
+    </div>
+    <br/>
+    <button id="btn_generate" type="button" onclick="generate()">Сгенерировать</button>
+    <br/>
+    <div id="result_container">
+        <!--    Container    -->
+    </div>
+</body>
+</html>
