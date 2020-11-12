@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Access generator</title>
+
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
     <script type="text/javascript" src="/eel.js"></script>
@@ -10,15 +12,32 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", () => {
             eel.get_class_list()(class_list => {
-                document.getElementById("data_container").innerHTML = class_list;
-                alert(class_list);
-            });
-        });
+                document.getElementById("data_container").innerHTML = class_list
+
+                let rows = document.getElementById("rows")
+
+                for (let row = 0; row <5; row++) {
+                    let tr = document.createElement("tr")
+                    for (let col = 0; col < 5; col++) {
+                        let id = row + "" + col
+                        let td = document.createElement("td")
+                        td.innerHTML =
+                            `<div class="checkbox">
+                                <input class="custom-checkbox CustomClass" type="checkbox"
+                                    id="cls${id}" name="cls${id}" value="class">
+                                <label for="cls${id}">CustomClass${id}</label>
+                            </div>`
+                        tr.append(td)
+                    }
+                    rows.append(tr)
+                }
+            })
+        })
 
         function generate() {
-            var input_data = document.getElementsByClassName("CustomClass")
+            const input_data = document.getElementsByClassName("CustomClass");
 
-            var data = [];
+            const data = [];
             Array.prototype.forEach.call(input_data, function(el) {
                 if (el.checked) {
                     data.push(el.id);
@@ -33,7 +52,6 @@
         }
 
         jQuery('#btn_generate').on('click', function() {
-            alert('GENERATION!!!');
             generate();
         });
     </script>
@@ -43,6 +61,10 @@
     <div id="data_container">
         <!--    Container    -->
     </div>
+    <br/>
+    <table id="rows">
+      <!--    Class rows    -->
+    </table>
     <br/>
     <button id="btn_generate" type="button" onclick="generate()">Сгенерировать</button>
     <br/>

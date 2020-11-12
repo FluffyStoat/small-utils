@@ -11,13 +11,40 @@ def close_callback(route, websockets):
 @eel.expose
 def get_class_list():
     form: str = '''
-    <div>
-        <input id="CustomClass" class="CustomClass" type="checkbox">CustomClass
-        <input id="CustomClass_CREATE" class="CustomClass" type="checkbox">EntityOp.CREATE
-        <input id="CustomClass_READ" class="CustomClass" type="checkbox">EntityOp.READ
-        <input id="CustomClass_UPDATE" class="CustomClass" type="checkbox">EntityOp.UPDATE
-        <input id="CustomClass_DELETE" class="CustomClass" type="checkbox">EntityOp.DELETE
-    </div>
+    <table>
+      <tr>
+        <td>
+            <div class="checkbox">
+                <input class="custom-checkbox CustomClass" type="checkbox" id="cls" name="cls" value="class">
+                <label for="cls">CustomClass</label>
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                <input class="custom-checkbox CustomClass" type="checkbox" id="create" name="create" value="create">
+                <label for="create">CREATE</label>
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                <input class="custom-checkbox CustomClass" type="checkbox" id="read" name="read" value="read">
+                <label for="read">READ</label>
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                <input class="custom-checkbox CustomClass" type="checkbox" id="update" name="update" value="update">
+                <label for="update">UPDATE</label>
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                <input class="custom-checkbox CustomClass" type="checkbox" id="delete" name="delete" value="delete">
+                <label for="delete">DELETE</label>
+            </div>
+        </td>
+      </tr>
+    </table>
     '''
     return form
 
@@ -32,4 +59,4 @@ def generate(data: List[str]) -> List[str]:
 
 if __name__ == '__main__':
     eel.init('web')
-    eel.start('main.html', size=(800, 600), port=31001, close_callback=close_callback)
+    eel.start('main.html', size=(1080, 1024), port=31001, close_callback=close_callback)
