@@ -7,11 +7,11 @@
    @EntityAttributeAccess(entityClass = BusinessUser.class, modify = "*")
    ```
 
-   Example:
+   **Example:**
    ```
    python roles_access_generate.py -d <path_to_dir> -o <output_file>
    ```
-   Result:
+   **Result:**
    ```
    @EntityAccess(entityClass = CustomEntity.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
    

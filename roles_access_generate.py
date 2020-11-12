@@ -13,7 +13,7 @@ import re
 from os import walk, path
 from typing import List
 
-# Todo: Add operations type, refactor code, split by functions
+# Todo: Add operations type, refactor code, split by functions, exclude re, use file name
 
 
 def main(argv: List[str]):
