@@ -10,10 +10,12 @@
     <script type="text/javascript" src="/eel.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+        let input_data = []
+
         document.addEventListener("DOMContentLoaded", () => {
             eel.get_class_list()(class_list => {
-
                 const operations = ['create', 'read', 'update', 'delete'];
+                input_data = class_list
 
                 class_list.forEach(className => {
                     let rows = document.getElementById("rows")
@@ -63,14 +65,18 @@
         }
 
         function generate() {
-            const input_data = document.getElementsByClassName("CustomClass");
-
             const data = [];
-            Array.prototype.forEach.call(input_data, function(el) {
-                if (el.checked) {
-                    data.push(el.id);
-                }
-            });
+
+            input_data.forEach(cls => {
+                const selected_data = document.getElementsByClassName(cls);
+
+                Array.prototype.forEach.call(selected_data, function(el) {
+                    if (el.checked) {
+                        data.push(el.id);
+                    }
+                });
+
+            })
 
             eel.generate(data)(callBack);
         }
@@ -85,7 +91,7 @@
     </script>
 </head>
 <body>
-    <p><b>Please, select classes for property generation:</b></p><br/>
+    <p><b>Выберите для каких классов создать шаблон свойств:</b></p><br/>
     <div id="data_container">
         <!--    Container    -->
     </div>
@@ -94,7 +100,9 @@
       <!--    Class rows    -->
     </table>
     <br/>
-    <button id="btn_generate" type="button" onclick="generate()">Сгенерировать</button>
+    <button id="btn_generate" type="button" class="square_btn" onclick="generate()"
+        style="width: 250px;height: 45px;">Сгенерировать</button>
+    <br/>
     <br/>
     <div id="result_container">
         <!--    Container    -->

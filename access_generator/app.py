@@ -10,7 +10,7 @@ def close_callback(route, websockets):
 
 @eel.expose
 def get_class_list():
-    return ["Driver", "Customer", "Order", "Account"]
+    return ["Driver", "Customer", "Order", "Account", "Building", "MasterRequest"]
 
 
 @eel.expose
