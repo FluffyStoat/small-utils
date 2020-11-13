@@ -10,43 +10,7 @@ def close_callback(route, websockets):
 
 @eel.expose
 def get_class_list():
-    form: str = '''
-    <table>
-      <tr>
-        <td>
-            <div class="checkbox">
-                <input class="custom-checkbox CustomClass" type="checkbox" id="cls" name="cls" value="class">
-                <label for="cls">CustomClass</label>
-            </div>
-        </td>
-        <td>
-            <div class="checkbox">
-                <input class="custom-checkbox CustomClass" type="checkbox" id="create" name="create" value="create">
-                <label for="create">CREATE</label>
-            </div>
-        </td>
-        <td>
-            <div class="checkbox">
-                <input class="custom-checkbox CustomClass" type="checkbox" id="read" name="read" value="read">
-                <label for="read">READ</label>
-            </div>
-        </td>
-        <td>
-            <div class="checkbox">
-                <input class="custom-checkbox CustomClass" type="checkbox" id="update" name="update" value="update">
-                <label for="update">UPDATE</label>
-            </div>
-        </td>
-        <td>
-            <div class="checkbox">
-                <input class="custom-checkbox CustomClass" type="checkbox" id="delete" name="delete" value="delete">
-                <label for="delete">DELETE</label>
-            </div>
-        </td>
-      </tr>
-    </table>
-    '''
-    return form
+    return ["Driver", "Customer", "Order", "Account"]
 
 
 @eel.expose

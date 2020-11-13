@@ -12,27 +12,55 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", () => {
             eel.get_class_list()(class_list => {
-                document.getElementById("data_container").innerHTML = class_list
 
-                let rows = document.getElementById("rows")
+                const operations = ['create', 'read', 'update', 'delete'];
 
-                for (let row = 0; row <5; row++) {
-                    let tr = document.createElement("tr")
-                    for (let col = 0; col < 5; col++) {
-                        let id = row + "" + col
-                        let td = document.createElement("td")
-                        td.innerHTML =
-                            `<div class="checkbox">
-                                <input class="custom-checkbox CustomClass" type="checkbox"
-                                    id="cls${id}" name="cls${id}" value="class">
-                                <label for="cls${id}">CustomClass${id}</label>
-                            </div>`
-                        tr.append(td)
-                    }
-                    rows.append(tr)
-                }
+                class_list.forEach(className => {
+                    let rows = document.getElementById("rows")
+                    let row = document.createElement("tr")
+
+                    let name = document.createElement("td")
+                    name.innerHTML = createCheckBox(className, className, className)
+                    row.append(name)
+
+                    operations.forEach(op => {
+                        let operation = document.createElement("td")
+                        operation.innerHTML = createCheckBox(className + "" + op, className, op)
+                        row.append(operation)
+                    })
+
+                    rows.append(row)
+                });
+
+                // document.getElementById("data_container").innerHTML = class_list
+                //
+                // let rows = document.getElementById("rows")
+                //
+                // for (let row = 0; row <5; row++) {
+                //     let tr = document.createElement("tr")
+                //     for (let col = 0; col < 5; col++) {
+                //         let id = row + "" + col
+                //         let td = document.createElement("td")
+                //         td.innerHTML =
+                //             `<div class="checkbox">
+                //                 <input class="custom-checkbox CustomClass" type="checkbox"
+                //                     id="cls${id}" name="cls${id}" value="class">
+                //                 <label for="cls${id}">CustomClass${id}</label>
+                //             </div>`
+                //         tr.append(td)
+                //     }
+                //     rows.append(tr)
+                // }
             })
         })
+
+        function createCheckBox(id, cls, name) {
+            return `<div class="checkbox">
+                        <input class="custom-checkbox ${cls}" type="checkbox"
+                            id="${id}" name="${id}" value="class">
+                        <label for="${id}">${name}</label>
+                    </div>`
+        }
 
         function generate() {
             const input_data = document.getElementsByClassName("CustomClass");
