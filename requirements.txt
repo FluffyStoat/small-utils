@@ -1,2 +1,2 @@
-Eel==0.14.0
+Kivy==2.0.0rc4
 javalang==0.13.0
