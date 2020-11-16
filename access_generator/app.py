@@ -1,20 +1,17 @@
 import os
-import kivy
-import javalang
+from os import walk, path
+from typing import List, Dict
 
+import javalang
+import kivy
+from javalang.tree import CompilationUnit
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-
-from os import walk, path
-from typing import List, Dict
-from javalang.tree import CompilationUnit
 from kivy.uix.scrollview import ScrollView
-from kivy.uix.textinput import TextInput
 
 kivy.require('2.0.0')  # replace with your current kivy version !
 
@@ -107,8 +104,8 @@ class MainScreen(GridLayout):
 
 
 class GeneratorApp(App):
-
-    def build(self):
+    @staticmethod
+    def build():
         return MainScreen()
 
 

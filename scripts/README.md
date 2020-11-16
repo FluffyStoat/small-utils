@@ -1,4 +1,4 @@
-**Utility scripts for "Cuba-platform":**
+**Scripts:**
 
 1. Script for generating **"EntityAccess"** and **"EntityAttributeAccess"** for security role by template:
     ```
